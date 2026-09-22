@@ -1,28 +1,32 @@
-# Expedia Lite — Part 1
+# Expedia Lite — Part 2
 
 ## Repository and commit
 
 Repository: https://github.com/dbayode08-lgtm/expedia-lite
-Commit: 52de663f67b6c6bd39bc3d1f9a3fb3289bc5efb8
+Commit: 38f0be3ff8f9029db8ab265113b37d63ac328777
 
 ## Implementation
 
-The frontend is a single Vue 3 component (`frontend/src/App.vue`) with a search input, a Search button, and a results table. It calls `GET /api/search` on the backend and renders the returned hotels and trips, or a "no results" message when nothing matches.
+All reads and writes now go through SQLite (`backend/expedia_lite.db`) instead of the CSV files used in Part 1. `backend/seed.py` seeds the database once from `hotels.csv`, `trips.csv`, `users.csv`, and `bookings.csv` on first run; it checks whether a `hotels` table already exists and skips seeding entirely if so, so restarting the app never re-seeds or duplicates the starter records.
 
-FastAPI (`backend/main.py`) is the only contract between frontend and backend. It reads `hotels.csv` and `trips.csv` directly from disk on every request, joins matching hotels to their trips via `hotel_id`, and returns derived fields (nights stayed, computed stay price) since the data pack doesn't store price directly.
+`backend/main.py` adds four booking endpoints on top of the existing search: `POST /api/bookings` (create), `GET /api/bookings` (read, joined with trip/hotel/user details for display), `PATCH /api/bookings/{id}/cancel` (update — sets status to "cancelled" but keeps the record), and `DELETE /api/bookings/{id}` (delete). New booking IDs are generated sequentially (e.g. B007) based on the highest existing ID, so seeded IDs are preserved and new ones never collide.
 
-One design decision worth noting: the assignment brief describes searching by hotel name, but the instructor's own sample-data README documents worked test cases that search by city instead (e.g. searching "Boston" returns trips T001, T002, T009, T010). Rather than satisfy only one reading, the search matches a query against both `hotel_name` and `city`, so both interpretations work correctly.
+The frontend (`frontend/src/App.vue`) adds a "Booking as:" traveler picker, a Book button on each search result trip, and a Booking History table below search results with Cancel and Delete buttons per row (Cancel only shows for non-cancelled bookings).
 
 ## Verification
 
 | Action | Expected | Observed |
 |---|---|---|
-| Search "Boston" | Returns 2 hotels (Harbor Lantern Hotel, Maple Square Inn) and trips T001, T002, T009, T010, matching the instructor's documented test case | Matched exactly — see screenshot below |
-| Search "Miami" | No hotels match; a "no hotels matched" message displays | Matched exactly — see screenshot below |
+| Create a booking (search → Book) | New row appears in Booking History with status "confirmed" | Matched — see screenshot below (B007 created and confirmed) |
+| Read booking history | All bookings display with correct hotel/trip/traveler details, joined from 3 tables | Matched — see screenshot below |
+| Cancel a booking | Status changes to "cancelled"; Cancel button disappears, only Delete remains | Matched — screenshot below shows B002 and B006 already in "cancelled" status with only the Delete button visible for those rows, confirming the UI correctly reflects cancelled state |
+| Delete a booking | Row disappears from the table entirely | Matched (tested via UI: booking removed from table immediately) |
+| Browser refresh | Newly created booking persists after reload | Matched |
+| Full restart (both backend and frontend servers stopped and restarted) | All bookings — seeded and newly added — persist with correct status; no duplication; no re-seeding | Matched — see screenshot below (7 bookings shown after a full restart, including B007 created earlier in the session) |
 
-Screenshots: `docs/screenshots/search-boston.png`, `docs/screenshots/search-miami.png`
+Screenshot: `docs/screenshots/part2-persistence.png`
 
-I also manually verified the backend endpoint directly (via browser and curl) against every worked example in the data pack's README (Boston, New York, Philadelphia, Washington, State College, Miami/no-match) before testing through the UI, and confirmed the derived stay-price calculation (e.g. trip T001: 2 nights × $150/night = $300).
+I also verified all four CRUD operations directly against the backend via curl before testing through the UI, confirming correct JSON responses and proper 404 handling for a nonexistent booking ID.
 
 ## Project context and next steps
 
@@ -32,6 +36,8 @@ I also manually verified the backend endpoint directly (via browser and curl) ag
 - [Selected prompts](https://github.com/dbayode08-lgtm/expedia-lite/tree/main/prompts)
 - [Current handoff](https://github.com/dbayode08-lgtm/expedia-lite/blob/main/handoffs/current.md)
 
-**Limitations:** No persistence yet — every search re-reads the CSVs from disk. No booking, history, or CRUD.
+**Changes since Part 1:** Replaced direct CSV reads with a seeded SQLite database. Added full booking CRUD (create, read, update/cancel, delete) through the frontend. Verified persistence across both browser refresh and full server restart.
 
-**Next task:** Part 2 — seed a SQLite database from the CSVs and add booking create/read/update(cancel)/delete through the frontend.
+**Limitations:** No authentication — the traveler picker is a simple dropdown of demo users rather than real login. No editing of an existing booking's dates or trip, only cancel/delete.
+
+**Next task:** None remaining for this assignment — Parts 1 and 2 are both complete.
