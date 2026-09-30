@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import HotelSearchPage from "./components/HotelSearchPage.vue";
 
 const API_BASE = "http://127.0.0.1:8000";
 
@@ -97,6 +98,13 @@ onMounted(() => {
 <template>
   <main>
     <h1>Expedia Lite</h1>
+
+    <!-- Assignment 2 Part 1: live Geoapify search + Leaflet map -->
+    <section>
+      <HotelSearchPage />
+    </section>
+
+    <h2 class="legacy-heading">Sample data (Assignment 1)</h2>
 
     <section>
       <h2>Search</h2>

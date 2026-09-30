@@ -75,3 +75,13 @@ request (`utf-8-sig` encoding, since the files carry a BOM), filters
 hotels by hotel name or city, and joins each matching hotel to its trips
 via `hotel_id`. Stay price is computed, not stored. No database yet —
 Part 2 replaces this with SQLite, seeded from these same files.
+
+## Assignment 2 Part 1 — live hotel search by ZIP
+
+1. `cp backend/.env.example backend/.env` and paste a free Geoapify key
+   (<https://myprojects.geoapify.com>). `.env` is git-ignored.
+2. `cd backend && pip install -r requirements.txt` then run the backend as above.
+3. `cd frontend && npm install` then `npm run dev`.
+4. The ZIP search is at the top of the page. Offline checks: `cd backend && python -m pytest -q`.
+
+Report: `docs/a2-part1/report.md`.

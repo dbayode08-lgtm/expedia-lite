@@ -6,3 +6,9 @@ __pycache__/
 venv/
 *.db
 .DS_Store
+
+# secrets (Assignment 2) -- API keys live only in backend/.env
+.env
+.env.*
+!.env.example
+.pytest_cache/

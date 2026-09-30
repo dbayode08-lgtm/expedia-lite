@@ -13,7 +13,14 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from dotenv import load_dotenv
+
 from seed import get_conn, seed
+
+# Assignment 2: GEOAPIFY_API_KEY lives in backend/.env (git-ignored, never committed).
+load_dotenv(Path(__file__).parent / ".env")
+
+from live_search.controller import router as live_search_router  # noqa: E402
 
 DB_PATH = Path(__file__).parent / "expedia_lite.db"
 
@@ -25,6 +32,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Assignment 2 Part 1: live hotel search (Geoapify) -> GET /api/live/hotels?zip=16801
+app.include_router(live_search_router)
 
 
 @app.on_event("startup")
