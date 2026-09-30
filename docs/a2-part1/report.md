@@ -3,7 +3,7 @@
 ## 1. Project access
 
 - **Repository:** https://github.com/dbayode08-lgtm/expedia-lite
-- **Assessed commit:** TODO (run `git rev-parse HEAD` after your final push)
+- **Assessed commit:** `8fd9e6b06432055dd7402bb7118a2a5ba6a4f9dd` (https://github.com/dbayode08-lgtm/expedia-lite/commit/8fd9e6b06432055dd7402bb7118a2a5ba6a4f9dd)
 - **Where the new code lives:**
   - `backend/live_search/` — MVC split for the live search (`models.py`, `geoapify_client.py`, `controller.py`)
   - `backend/tests/test_live_search.py` — offline checks (no API calls)
@@ -49,7 +49,9 @@ Endpoint: `GET /api/live/hotels?zip=16801`. The browser only ever calls our Fast
 
 ## 3. Early mockup
 
-![Early mockup](mockup.jpg)
+![Early mockup](https://github.com/dbayode08-lgtm/expedia-lite/blob/8fd9e6b06432055dd7402bb7118a2a5ba6a4f9dd/docs/a2-part1/mockup.jpg?raw=true)
+
+Mockup file: https://github.com/dbayode08-lgtm/expedia-lite/blob/8fd9e6b06432055dd7402bb7118a2a5ba6a4f9dd/docs/a2-part1/mockup.jpg
 
 Hand sketch: ZIP form on top, one status banner for every state, list on the left, map on the right, with card ↔ pin selection and no prices or ratings.
 
