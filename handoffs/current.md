@@ -2,6 +2,15 @@
 
 _Update this file at each checkpoint._
 
+## Status: Assignment 2, Part 2 in-class (local hotel storage) — branch assignment2_part2_in_class
+
+- [x] saved_hotels, saved_hotel_zips, demo_hotel_nights (additive migration on startup; A1 tables untouched)
+- [x] /api/local: GET hotels?zip=, GET saved-ids, POST hotels, DELETE hotels/{id}
+- [x] Add to Local / Remove from Local; "Saved locally" vs "API results"; local failure = error, not empty
+- [x] Automated: `python -m pytest -q` -> 26 passed (8 new, temp DBs); `npm run build` OK
+- [ ] Manual DB Browser + browser benchmarks (student)
+- DB file: backend/expedia_lite.db. Demo nights: 2026-10-10..14, defaults 10000 cents / 20 rooms (simulated).
+
 ## Status: Assignment 2, Part 1 (live hotel search + map)
 
 ## What works
