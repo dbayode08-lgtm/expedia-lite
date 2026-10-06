@@ -21,6 +21,8 @@ from seed import get_conn, seed
 load_dotenv(Path(__file__).parent / ".env")
 
 from live_search.controller import router as live_search_router  # noqa: E402
+from local_hotels.controller import router as local_hotels_router  # noqa: E402
+from local_hotels.schema import migrate  # noqa: E402
 
 DB_PATH = Path(__file__).parent / "expedia_lite.db"
 
@@ -36,12 +38,21 @@ app.add_middleware(
 # Assignment 2 Part 1: live hotel search (Geoapify) -> GET /api/live/hotels?zip=16801
 app.include_router(live_search_router)
 
+# Assignment 2 Part 2: saved API hotels + simulated dated rates -> /api/local/...
+app.include_router(local_hotels_router)
+
 
 @app.on_event("startup")
 def on_startup():
     # Seeds only if the database doesn't already have data — safe to
     # call on every startup, including restarts.
     seed()
+    # Assignment 2 Part 2: additive, repeatable migration (CREATE IF NOT EXISTS).
+    conn = get_conn()
+    try:
+        migrate(conn)
+    finally:
+        conn.close()
 
 
 def nights_between(check_in: str, check_out: str) -> int:

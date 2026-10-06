@@ -28,6 +28,8 @@ TABLES = [
 def get_conn() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    # Assignment 2 Part 2: enforce saved_hotels -> demo_hotel_nights / ZIP links.
+    conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
 
