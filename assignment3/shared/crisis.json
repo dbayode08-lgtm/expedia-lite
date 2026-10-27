@@ -1,0 +1,43 @@
+{
+  "_note": "Static crisis-support content. Bundled into the frontend at build time, so the Crisis support button works with no backend, no model and no network. The same patterns are used by the backend before any model call.",
+  "heading": "Crisis support",
+  "intro": "This is a class prototype, not a support service, and no one is watching these messages. If you might act on thoughts of harming yourself or someone else, or you are in danger, contact one of these now.",
+  "resources": [
+    {
+      "label": "Call or text 988",
+      "detail": "988 Suicide & Crisis Lifeline (U.S.), 24/7",
+      "href": "tel:988"
+    },
+    {
+      "label": "Text LIONS to 741741",
+      "detail": "Crisis Text Line, 24/7",
+      "href": "sms:741741?&body=LIONS"
+    },
+    {
+      "label": "Penn State Crisis Line: 1-877-229-6400",
+      "detail": "24/7",
+      "href": "tel:18772296400"
+    },
+    {
+      "label": "Call 911",
+      "detail": "If you are in immediate danger",
+      "href": "tel:911"
+    }
+  ],
+  "patterns": [
+    "\\bkill(ing)? myself\\b",
+    "\\bsuicid",
+    "\\bend (it all|my life|things)\\b",
+    "\\b(want|wanna|going) to die\\b",
+    "\\bdon'?t want to (live|be alive|be here)\\b",
+    "\\bno reason to live\\b",
+    "\\bhurt(ing)? myself\\b",
+    "\\bharm(ing)? myself\\b",
+    "\\bself[- ]?harm",
+    "\\bcut(ting)? myself\\b",
+    "\\boverdos",
+    "\\bbetter off (dead|without me)\\b",
+    "\\bhurt (someone|somebody|them|him|her)\\b",
+    "\\bkill (someone|somebody|them|him|her)\\b"
+  ]
+}

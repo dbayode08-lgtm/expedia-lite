@@ -2,6 +2,18 @@
 
 _Update this file at each checkpoint._
 
+## Status: Assignment 3 (Steady) — branch assignment3, folder assignment3/
+
+- [x] 4 skills (breathing 63 s, grounding ~54 s, STOP ~42 s, reframe ~65 s), one instruction per screen, one-tap Stop
+- [x] Crisis support in every header, static, works with model failure + backend down
+- [x] Check-in (retrieval + model, validated, 6 s timeout, fallback), reframe alternatives (opt-in)
+- [x] SQLite: sessions, exercise_runs, messages, model_calls, app_state, skill_cards; History + Clear history; "Your usual"
+- [x] pytest 50/50, API scenarios 17/17 (mock), browser checks 15/15
+- [ ] Live-model repeats (`python3 -m eval.scenarios --live`) -- needs an API key in assignment3/backend/.env
+- [ ] Record demo + process screencast (script: assignment3/docs/recording-script.md); paste links in report-3.3.md
+- [ ] Fill "What I checked myself" in assignment3/AI-USE.md
+
+
 ## Status: Assignment 2, Part 2 in-class (local hotel storage) — branch assignment2_part2_in_class
 
 - [x] saved_hotels, saved_hotel_zips, demo_hotel_nights (additive migration on startup; A1 tables untouched)

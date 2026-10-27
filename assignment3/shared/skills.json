@@ -1,0 +1,61 @@
+{
+  "_note": "Single source of truth for skill steps and planned timing. Read by the Vue app (renders the steps) and by FastAPI/pytest (allowed skill ids + timing checks). The model never changes these steps.",
+  "max_exercise_seconds": 90,
+  "skills": [
+    {
+      "id": "breathing",
+      "name": "Paced breathing",
+      "short": "Breathe in 4, out 6",
+      "mode": "timed",
+      "steps": [
+        { "text": "Breathe with the circle. In as it grows, out as it shrinks.", "seconds": 3, "kind": "intro" },
+        { "text": "cycle", "seconds": 60, "kind": "breath_cycles", "cycles": 6, "inhale": 4, "exhale": 6 }
+      ],
+      "planned_seconds": 63,
+      "timing_assumption": "Fully paced by the app: 3 s orientation + 6 cycles of 4 s in / 6 s out. No user input needed."
+    },
+    {
+      "id": "grounding",
+      "name": "5-4-3-2-1 grounding",
+      "short": "Notice what's around you",
+      "mode": "user_paced",
+      "steps": [
+        { "text": "Look for 5 things you can see.", "count": 5, "sense": "see", "seconds": 12 },
+        { "text": "Notice 4 things you can feel.", "count": 4, "sense": "feel", "seconds": 12 },
+        { "text": "Listen for 3 things you can hear.", "count": 3, "sense": "hear", "seconds": 12 },
+        { "text": "Notice 2 things you can smell.", "count": 2, "sense": "smell", "seconds": 10 },
+        { "text": "Notice 1 thing you can taste.", "count": 1, "sense": "taste", "seconds": 8 }
+      ],
+      "planned_seconds": 54,
+      "timing_assumption": "User taps once per step after noticing silently (no typing). Assumed 8-12 s per step."
+    },
+    {
+      "id": "stop",
+      "name": "STOP",
+      "short": "Stop, step back, observe, proceed",
+      "mode": "timed_skippable",
+      "steps": [
+        { "letter": "S", "title": "Stop", "text": "Pause what you're doing. Stay where you are.", "seconds": 6 },
+        { "letter": "T", "title": "Take a step back", "text": "Take one slow breath and step back from the moment.", "seconds": 8 },
+        { "letter": "O", "title": "Observe", "text": "Notice what's happening inside you, and what's happening around you.", "seconds": 20 },
+        { "letter": "P", "title": "Proceed mindfully", "text": "Choose your next small step, at your own pace.", "seconds": 8 }
+      ],
+      "planned_seconds": 42,
+      "timing_assumption": "Each letter advances on its own after the listed time; the user may tap Next to move sooner."
+    },
+    {
+      "id": "reframe",
+      "name": "One-minute reframe",
+      "short": "Look at one thought another way",
+      "mode": "user_paced",
+      "steps": [
+        { "key": "thought", "text": "What's the thought?", "seconds": 15, "chips": ["I messed everything up", "They're upset with me", "This won't get better"] },
+        { "key": "evidence", "text": "What makes it feel true? A word or two is enough.", "seconds": 20, "optional": true },
+        { "key": "alternative", "text": "Is there another way to read it?", "seconds": 25, "optional": true, "model_assist": true },
+        { "key": "close", "text": "You looked at the thought from another side. That's the whole skill.", "seconds": 5 }
+      ],
+      "planned_seconds": 65,
+      "timing_assumption": "User taps a chip or types a few words (15 s), types or skips evidence (20 s), picks or writes an alternative (25 s, includes up to 6 s model wait; model timeout is 6 s), reads the close (5 s)."
+    }
+  ]
+}

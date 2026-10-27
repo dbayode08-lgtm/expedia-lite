@@ -85,3 +85,7 @@ Part 2 replaces this with SQLite, seeded from these same files.
 4. The ZIP search is at the top of the page. Offline checks: `cd backend && python -m pytest -q`.
 
 Report: `docs/a2-part1/report.md`.
+
+## Assignment 3 — Steady (mental health skills prototype)
+
+Everything for Assignment 3 is in [`assignment3/`](assignment3/README.md) (its own backend on :8001 and frontend on :5174, so it runs alongside Expedia Lite). Coursework prototype only — fictional scenarios, not a support tool. Reports: `assignment3/reports/`.

@@ -1,0 +1,27 @@
+flowchart TD
+    CRISIS[["Crisis support panel<br/>static 988 / 741741 / PSU line / 911<br/>no backend, no model"]]
+    START["Start: 'What would help right now?'<br/>Your usual (if any) + 4 skills<br/>optional one-line check-in"]
+    CHECK{"Check-in text"}
+    RULE["Crisis regex (browser + backend)<br/>BEFORE any model call"]
+    MODEL["Model: <=2 sentences + name 1 skill<br/>validated, 6 s timeout, fallback"]
+    SUGG["Suggestion shown as one more button"]
+    EX["Exercise: one instruction per screen<br/>header: Stop | Pause | Crisis support"]
+    DONE["Done: optional 'Helped a bit' / 'Not this time'"]
+    STOPPED["Stopped: 'That's fine.' nothing lost"]
+    HIST["History: saved runs + check-in, Clear history"]
+    DB[("SQLite: sessions, exercise_runs,<br/>messages, model_calls, skill_cards")]
+
+    START -->|tap a skill| EX
+    START --> CHECK
+    CHECK --> RULE
+    RULE -->|match| CRISIS
+    RULE -->|no match| MODEL --> SUGG -->|tap| EX
+    EX -->|final planned step| DONE --> START
+    EX -->|Stop, one tap| STOPPED --> START
+    EX -.->|any time, pauses timer| CRISIS
+    START -.-> CRISIS
+    START --> HIST
+    DONE --> DB
+    STOPPED --> DB
+    SUGG --> DB
+    DB -->|"Your usual" from completions + feedback| START
