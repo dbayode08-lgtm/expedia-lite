@@ -1,7 +1,7 @@
 # Assignment 3.3: Integration, Evaluation, and Demonstration (Steady)
 
 - **Repository:** https://github.com/dbayode08-lgtm/expedia-lite (branch `assignment3`, folder `assignment3/`)
-- **Commit:** `COMMIT_HASH`
+- **Commit:** `ae04d6a`
 - **Recordings:** Demo: _LINK_  ·  Process screencast (failure → evidence → decision) + code explanation: _LINK_
 - **Run from a clean checkout:** [README](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/README.md)
 

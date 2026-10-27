@@ -1,7 +1,7 @@
 # Assignment 3.2: Working Application and Safety (Steady)
 
 - **Repository:** https://github.com/dbayode08-lgtm/expedia-lite (branch `assignment3`, folder `assignment3/`)
-- **Commit:** `COMMIT_HASH`
+- **Commit:** `ae04d6a`
 - **Submitted:** Oct 26, 2026
 - **Run:** [https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/README.md](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/README.md). Mock model by default, no key needed.
 

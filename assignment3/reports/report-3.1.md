@@ -1,7 +1,7 @@
 # Assignment 3.1: Research and Design (Steady)
 
 - **Repository:** https://github.com/dbayode08-lgtm/expedia-lite (branch `assignment3`, folder `assignment3/`)
-- **Commit:** `COMMIT_HASH`
+- **Commit:** `ae04d6a`
 - **Submitted:** Oct 26, 2026
 
 ## Links
