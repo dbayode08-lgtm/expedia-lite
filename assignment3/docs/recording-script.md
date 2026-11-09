@@ -1,4 +1,8 @@
-# Recording script (Part 3.3): ~8–10 min total, one recording with marked sections
+# Recording script (Part 3.3)
+
+**Update Nov 9:** Sections 1 and 2 are covered by the captioned video `docs/recordings/demo.mp4` (made with `e2e/record-demo.cjs`). Only **Section 3 (explain generated code, ~2 min, your voice)** still needs recording.
+
+## Original plan: ~8–10 min total, one recording with marked sections
 
 Before recording: run `start-steady.command` (or the README steps). Use **mock** mode. In DB Browser, open `assignment3/backend/steady.db`. Optional: clear history in the app so you start clean. Say at the start: *"This is a coursework prototype tested only with fictional scenarios."*
 

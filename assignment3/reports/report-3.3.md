@@ -1,8 +1,10 @@
 # Assignment 3.3: Integration, Evaluation, and Demonstration (Steady)
 
 - **Repository:** https://github.com/dbayode08-lgtm/expedia-lite (branch `assignment3`, folder `assignment3/`)
-- **Commit:** `ae04d6a`
-- **Recordings:** Demo: _LINK_  ·  Process screencast (failure → evidence → decision) + code explanation: _LINK_
+- **Commit:** `COMMIT_HASH`
+- **Recordings:**
+  - Demo + process screencast (one video, 3:49, captioned, marked sections: 1 Demo · 2 Failure → evidence → decision · 3 Saved data in SQLite): [https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/docs/recordings/demo.mp4](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/docs/recordings/demo.mp4). Recorded automatically with Playwright from the running app (mock model); script: [e2e/record-demo.cjs](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/e2e/record-demo.cjs).
+  - Code explanation: written walkthrough of `run_model()` in `backend/app/llm.py` (drafted by the coding agent, see AI-USE.md): [https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/docs/code-walkthrough.md](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/docs/code-walkthrough.md). No separate narrated recording.
 - **Run from a clean checkout:** [README](https://github.com/dbayode08-lgtm/expedia-lite/blob/assignment3/assignment3/README.md)
 
 ## Links
